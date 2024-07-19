@@ -1,0 +1,57 @@
+{%extends "main.html"%}
+{%load static%}
+{%block title%}
+<title>Gesture To Text</title>
+<link rel="stylesheet" href="{% static 'gesturetotext.css' %}">
+{%endblock%}
+  {%block content%}
+  <div class="container">
+    <div class="container3">
+      <h2>Gesture to Text</h2>
+    </div>
+    <input class="upload-btn" type="file" id="fileInput" accept="video/*">
+  
+  <!--<input type="file"   accept="video/*"  class="upload-btn" onclick="document.getElementById('fileInput').click()">-->
+    <div id="fileName"></div>
+    <button class="convert-btn" onclick="convertVideo()">Convert</button>
+    <div id="outputText"></div>
+    <a id="downloadLink" class="download-btn" download="output.txt" style="display: none;">Download Text</a>
+  </div>
+    
+  <script>
+        function convertVideo() {
+            var fileInput = document.getElementById('fileInput');
+            var fileNameDisplay = document.getElementById('fileName');
+            var outputText = document.getElementById('outputText');
+            var downloadLink = document.getElementById('downloadLink');
+
+            if (fileInput.files.length > 0) {
+                var file = fileInput.files[0];
+                fileNameDisplay.textContent = 'Selected File: ' + file.name;
+
+                // Send video file to server for processing
+                var formData = new FormData();
+                formData.append('file', file);
+
+                fetch('/process_video', {
+                    method: 'POST',
+                    body: formData
+                  })
+                  .then(response => response.json())  // Parse JSON response
+                  .then(data => {
+                    outputText.textContent = data.prediction;
+                    downloadLink.href = URL.createObjectURL(new Blob([data.prediction], {type: 'text/plain'}));
+                    downloadLink.style.display = 'block';
+                  })
+                  .catch(error => {
+                    console.error('Error:', error);
+             });
+
+                
+            } else {
+                alert('Please choose a video file first.');
+            }
+        }
+
+  </script>
+  {%endblock%}

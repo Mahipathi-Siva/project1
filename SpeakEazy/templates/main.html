@@ -1,0 +1,99 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}{% endblock %}
+{% if include_link %}<link rel="stylesheet" href="{%static 'home style.css'%}">
+{%endif%}
+</head>
+<body>
+  <div class="menu-bar">
+    <h1 class="logo">Speak<span>Eazy</span></h1>
+    <ul class="hello">
+      <li><a href="{% url 'SpeakEazy'%}">Home</a></li>
+      <li><a href="#">Features<i class="fas fa-caret-down"></i></a>
+          <div class="dropdown-menu">
+              <ul>
+                <li><a href="{% url 'voice-to-text' %}">Voice to Text</a></li>
+                <li><a href="{% url 'text-to-voice' %}">Text to Voice</a></li>
+                <li><a href="{% url 'gesture-to-text' %}">Gesture to Text</a></li>
+                <li><a href="{% url 'gesture-to-voice' %}">Gesture to Voice</a></li>
+            
+              </ul>
+            </div>
+      </li>
+    </li>
+  </ul>
+    </ul>
+  </div>
+  {% block content %}
+  {% endblock %}
+  </body>
+  <footer>
+    <div class="container2">
+        <div class="row">
+              <div class="col" id="company">
+                  <img src="{% static 'pic2.jpg' %}" alt="" class="logo">
+                  <p>
+                    We are specialized in designings, make your business a brand.
+                    Try our premium services.
+                  </p>
+                  <div class="social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                  </div>
+              </div>
+
+
+              <div class="col" id="services">
+                 <h3>Services</h3>
+                 <div class="links">
+                    <a href="#">Gesture to Text</a>
+                    <a href="#">Gesture to Voice </a>
+                    <a href="#">Text to Gesture</a>
+                    <a href="#">Voice to Gesture</a>
+                    <a href="#">Text to Voice</a>
+                    <a href="#">Voice to Text</a>
+                 </div>
+              </div>
+
+              <div class="col" id="useful-links">
+                 <h3>Links</h3>
+                 <div class="links">
+                    <a href="#">About</a>
+                    <a href="#">Services</a>
+                    <a href="#">Our Policy</a>
+                    <a href="#">Help</a>
+                 </div>
+              </div>
+
+              <div class="col" id="contact">
+                  <h3>Contact</h3>
+                  <div class="contact-details">
+                     <i class="fa fa-location"></i>
+                     <p>Nambur,Guntur<br> AP, India</p>
+                  </div>
+                  <div class="contact-details">
+                     <i class="fa fa-phone"></i>
+                     <p>+91 9573580571</p>
+                  </div>
+              </div>
+        </div>
+
+        <div class="row">
+              <div class="form">
+                <form action="">
+                    <input type="text" placeholder="Email here...">
+                    <button><i class="fa fa-paper-plane"></i></button>
+                </form>
+              </div>
+        </div>
+        <div class="text-footer-credits" style="color: beige; margin-top: 60px;">© 2018 SpeakEasy Inc, All rights reserved.</div>
+    </div>
+ </footer>
+ </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sign Up</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'signupstyle.css' %}">
+</head>
+<body>
+        <div class="container">
+          <form method='post' class="form">
+              <div class="form_front">
+                  <div class="form_details">Signup</div>
+                  <input placeholder="Username" class="input" type="text" id="id_username">
+                  <input placeholder="Email Id" class="input" type="email" id="id_email">
+                  <input placeholder="Password" class="input"type="password" name="password1" autocomplete="new-password" required aria-describedby="id_password1_helptext" id="id_password1">
+                  <input placeholder="Confirm Password" class="input" type="password" name="password2" autocomplete="new-password" required aria-invalid="true" aria-describedby="id_password2_helptext" id="id_password2">
+                  <button class="btn">Signup</button>
+                  <span>Have an account? 
+                      <a href={%url 'login'%}>Log In</a>
+                  </span>
+              </div>
+          </form>
+        </div>
+</body>
+</html>
